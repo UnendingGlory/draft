@@ -1246,7 +1246,7 @@ that cannot be represented by any of the allowed types.
 
 \begin{bnf}
 \nontermdef{simple-escape-sequence-char} \textnormal{one of}\br
-    \terminal{'  "  ?  \textbackslash a  b  f  n  r  t  v}
+    \terminal{'  "  ?  \textbackslash{} a  b  f  n  r  t  v}
 \end{bnf}
 
 \begin{bnf}
@@ -1318,7 +1318,8 @@ The associated character encoding for ordinary and wide character literals
 determines encodability,
 but does not determine the value of
 non-encodable ordinary character literals or ordinary multicharacter literals.
-The examples for non-encodable ordinary and wide character literals assume that
+The examples in \tref{lex.ccon.literal}
+for non-encodable ordinary and wide character literals assume that
 the specified character lacks representation in the execution character set, or
 that encoding it would require more than one code unit.
 \end{note}
@@ -1344,19 +1345,19 @@ ordinary multicharacter literal &
 \keyword{int} &
 character set &
 \tcode{'abcd'} \\ \hline
-\tcode{'L'} &
+\tcode{L} &
 \defnx{wide character literal}{literal!character!wide} &
 \keyword{wchar_t} &
 encoding of &
 \tcode{L'w'} \\
  &
 non-encodable wide character literal &
- &
+\keyword{wchar_t} &
 the execution &
 \tcode{L'\textbackslash U0001F32A'} \\
  &
 wide multicharacter literal &
- &
+\keyword{wchar_t} &
 wide-character set &
 \tcode{L'abcd'} \\ \hline
 \tcode{u8} &
@@ -1800,8 +1801,8 @@ after concatenation (and not the single hexadecimal character
 \indextext{\idxcode{0}|seealso{zero, null}}%
 \indextext{\idxcode{0}!string terminator}%
 \indextext{\idxcode{0}!null character|see {character, null}}%
-In translation phase 7\iref{lex.phases},
-after adjacent string-literals are concatenated,
+In translation phase 6\iref{lex.phases},
+after adjacent \grammarterm{string-literal}s are concatenated,
 a null character is appended to the result.
 
 \pnum
@@ -1882,7 +1883,7 @@ these sequences should have no effect on encoding state.
 \item
 Each \grammarterm{conditional-escape-sequence}\iref{lex.ccon}
 contributes an
-\impdef{code unit sequence of \grammarterm{conditional-escape-sequence}}
+\impldef{code unit sequence for \grammarterm{conditional-escape-sequence}}
 code unit sequence.
 When encoding a stateful character encoding,
 it is
