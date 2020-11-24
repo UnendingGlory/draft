@@ -3365,7 +3365,7 @@ When a template is used in a context that requires an instantiation of
 the template,
 it is necessary to determine whether the instantiation is to be generated
 using the primary template or one of the partial specializations.
-This is done by matching the template arguments of the class template
+This is done by matching the template arguments of the template
 specialization with the template argument lists of the partial
 specializations.
 
@@ -3439,8 +3439,8 @@ template <int I> struct B<I, I*2, 2> {};    // OK
 \end{example}
 
 \pnum
-In a name that refers to a specialization of a class or variable template,
-(e.g., \tcode{A<int, int, 1>})
+In a name that refers to a specialization of a class or variable template
+(e.g., \tcode{A<int, int, 1>}),
 the argument list shall match the template parameter list of the primary
 template.
 The template arguments of a partial specialization are deduced from the arguments
